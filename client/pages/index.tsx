@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import styled from '@emotion/styled/macro'
 import tw from 'twin.macro'
+import GNB from './components/GNB'
 
 const Input = tw.input`
     text-center border h-28
@@ -17,8 +18,9 @@ const Home: NextPage = () => {
     <div>
       <main>
         <h1>
-          <Input placeholder="box" />
-          <MyDiv>Test Text</MyDiv>
+          <GNB></GNB>
+          {/* <Input placeholder="box" /> */}
+          {/* <MyDiv>Test Text</MyDiv> */}
         </h1>
       </main>
     </div>
