@@ -12,8 +12,12 @@ const app = express();
 const { PORT, MONGO_URI } = process.env;
 const { swaggerUi, specs } = require("./swagger/swagger");
 
+// Node의 native Promise 사용
+mongoose.Promise = global.Promise;
+mongoose.set("strictQuery", false);
+// Connect to MongoDB
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("Successfully connected to mongodb"))
   .catch((e) => console.error(e));
 
@@ -30,7 +34,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/api", api);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
-
+app.use("/todos", require("./routes/todos"));
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
