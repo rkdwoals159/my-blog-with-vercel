@@ -1,17 +1,13 @@
 const mongoose = require("mongoose");
+const todoSchema = require("../schemas/todos.schema");
 
-// Define Schemes
-const todoSchema = new mongoose.Schema(
-  {
-    todoid: { type: Number, required: true, unique: true },
-    content: { type: String, required: true },
-    completed: { type: String, default: false },
-  },
-  {
-    timestamps: true,
+const ToDo = mongoose.model("todos", todoSchema);
+
+module.exports = class ToDoModel {
+  async create(payload) {
+    return await ToDo.create(payload);
   }
-);
-
+};
 // Create new todo document
 todoSchema.statics.create = function (payload) {
   // this === Model

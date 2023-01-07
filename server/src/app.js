@@ -10,16 +10,13 @@ const indexRouter = require("./routes/index");
 
 const app = express();
 const { PORT, MONGO_URI } = process.env;
-const { swaggerUi, specs } = require("./swagger/swagger");
+const { swaggerUi, specs } = require("../swagger/swagger");
 
-// Node의 native Promise 사용
-mongoose.Promise = global.Promise;
-mongoose.set("strictQuery", false);
 // Connect to MongoDB
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("Successfully connected to mongodb"))
-  .catch((e) => console.error(e));
+mongoose.connect(process.env.MONGO_URI);
+const db = mongoose.connection;
+db.on("connected", () => console.log("정상적으로 MongoDB에 연결되었습니다."));
+db.on("error", () => console.error("MongoDB 연결에 실패했습니다..."));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
