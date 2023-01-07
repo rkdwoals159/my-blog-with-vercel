@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 // Define Schemes
 const postingSchema = new mongoose.Schema(
@@ -19,4 +19,4 @@ const postingSchema = new mongoose.Schema(
   }
 );
 
-module.exports = postingSchema;
+export default postingSchema

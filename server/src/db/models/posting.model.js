@@ -1,5 +1,5 @@
 import { model } from "mongoose";
-import postingSchema from "../schemas/posting.schema";
+import postingSchema from "../schemas/posting.schema.js";
 
 const Postings = model("posting", postingSchema);
 
@@ -21,4 +21,4 @@ export class PostingsModel {
 }
 
 const postingsModel = new PostingsModel();
-module.exports = postingsModel;
+export default postingsModel;

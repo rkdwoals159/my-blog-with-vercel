@@ -1,8 +1,7 @@
-const express = require("express");
-const router = express.Router();
-const user = require("./user");
+import express from "express";
+const indexrouter = express.Router();
 /* GET home page. */
-router.get("/", function (req, res, next) {
+indexrouter.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
@@ -12,5 +11,5 @@ router.get("/", function (req, res, next) {
  *   name: Users
  *   description: 유저 추가 수정 삭제 조회
  */
-router.use("/user", user);
-module.exports = router;
+// indexrouter.use("/user", user);
+export default indexrouter;

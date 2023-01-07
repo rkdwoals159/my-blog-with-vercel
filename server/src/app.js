@@ -1,24 +1,30 @@
-require("dotenv").config();
-const createError = require("http-errors");
-const express = require("express");
-const mongoose = require("mongoose");
-const path = require("path");
-const cookieParser = require("cookie-parser");
-const logger = require("morgan");
-const api = require("./routes");
-const indexRouter = require("./routes/index");
+import dotenv from "dotenv";
+import createError from "http-errors";
+import express from "express";
+import mongoose from "mongoose";
+import path from "path";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import indexRouter from "./routes/index.js";
+import postingRouter from "./routes/posting/index.js";
+import { swaggerUi, specs } from "../swagger/swagger.js";
+import http from "http";
+dotenv.config();
 
+const port = process.env.PORT | "8080";
 const app = express();
 const { PORT, MONGO_URI } = process.env;
-const { swaggerUi, specs } = require("../swagger/swagger");
-
+const __dirname = path.resolve();
+const server = http.createServer(app);
+server.listen(port, () => console.log("server open..."));
 // Connect to MongoDB
+mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGO_URI);
 const db = mongoose.connection;
 db.on("connected", () => console.log("정상적으로 MongoDB에 연결되었습니다."));
 db.on("error", () => console.error("MongoDB 연결에 실패했습니다..."));
-
 // view engine setup
+app.set("port", port);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
@@ -29,10 +35,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/api", api);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
-app.use("/todos", require("./routes/todos"));
-app.use('/postings',require('./routes/posting/index.js'))
+// app.use("/todos", require("./routes/todos"));
+app.use("/postings", postingRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -48,4 +53,4 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-module.exports = app;
+export default app;

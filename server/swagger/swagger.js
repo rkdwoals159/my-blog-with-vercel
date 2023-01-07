@@ -1,5 +1,5 @@
-const swaggerUi = require("swagger-ui-express");
-const swaggereJsdoc = require("swagger-jsdoc");
+import swaggerUi from "swagger-ui-express";
+import swaggerJSDoc from "swagger-jsdoc";
 
 const options = {
   swaggerDefinition: {
@@ -16,8 +16,8 @@ const options = {
       },
     ],
   },
-  apis: ["./routes/*.js", "./routes/user/*.js"], //Swagger 파일 연동
+  apis: ["./routes/*.js", "./routes/user/*.js",'./routes/posting/*.js'], //Swagger 파일 연동
 };
-const specs = swaggereJsdoc(options);
+const specs = swaggerJSDoc(options);
 
-module.exports = { swaggerUi, specs };
+export { swaggerUi, specs };
