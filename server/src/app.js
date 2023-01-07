@@ -9,6 +9,7 @@ import indexRouter from "./routes/index.js";
 import postingRouter from "./routes/posting/index.js";
 import { swaggerUi, specs } from "../swagger/swagger.js";
 import http from "http";
+import cors from "cors";
 dotenv.config();
 
 const port = process.env.PORT | "8080";
@@ -18,7 +19,7 @@ const __dirname = path.resolve();
 const server = http.createServer(app);
 server.listen(port, () => console.log("server open..."));
 // Connect to MongoDB
-mongoose.set('strictQuery', false);
+mongoose.set("strictQuery", false);
 mongoose.connect(process.env.MONGO_URI);
 const db = mongoose.connection;
 db.on("connected", () => console.log("정상적으로 MongoDB에 연결되었습니다."));
@@ -28,6 +29,14 @@ app.set("port", port);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
+const whiteList = ["http://localhost:3000", "http://jaemin-devBlog.ml"];
+app.use(
+  cors({
+    origin: whiteList,
+    credentials: true, // 응답 헤더에 Access-Control-Allow-Credentials 추가
+    optionsSuccessStatus: 200, // 응답 상태 200으로 설정
+  })
+);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -9,18 +9,18 @@ postingRouter.get("/", (req, res) => {
     .then((postings) => {
       if (!postings.length)
         return res.status(404).send({ err: "postings not found" });
-      res.send(`find successfully: ${postings}`);
+      res.send(postings);
     })
     .catch((err) => res.status(500).send(err));
 });
 
 // Find One by todoid
-postingRouter.get("/posting/:postid", (req, res) => {
+postingRouter.get("/:postid", (req, res) => {
   postingsModel
     .findOneByPostid(req.params.postid)
     .then((post) => {
       if (!post) return res.status(404).send({ err: "post not found" });
-      res.send(`findOne successfully: ${post}`);
+      res.send(post);
     })
     .catch((err) => res.status(500).send(err));
 });
@@ -41,7 +41,7 @@ postingRouter.post("/", (req, res) => {
 // });
 
 // Delete by todoid
-postingRouter.delete("/posting/:postid", (req, res) => {
+postingRouter.delete("/:postid", (req, res) => {
   postingsModel
     .deleteById(req.params.postid)
     .then(() => res.sendStatus(200))
