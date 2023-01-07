@@ -32,6 +32,7 @@ app.use("/", indexRouter);
 app.use("/api", api);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 app.use("/todos", require("./routes/todos"));
+app.use('/postings',require('./routes/posting/index.js'))
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
