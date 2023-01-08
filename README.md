@@ -2,9 +2,21 @@
 
 프론트엔드 개발자 강재민 개발블로그입니다.
 
-server env
-# port number
-PORT=8080
-# MongoDB URI
-# MONGO_URI=mongodb://localhost:27017/<db-name>
-MONGO_URI=mongodb://localhost:27017/todos
+## 기술스택 (예정)
+### 프론트엔드
+Next.js <br/>
+vercel 배포 <br/>
+Emotion / tailwind / twin macro <br/>
+React-query <br/>
+zustand <br/>
+postman <br/>
+
+### 백엔드
+Express.js <br/>
+mongoose <br/>
+MongoDB <br/>
+aws <br/>
+
+### CI/CD
+Husky <br/>
+Github action <br/>
