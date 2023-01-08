@@ -10,11 +10,13 @@ vercel 배포 <br/>
 Emotion / tailwind / twin macro <br/>
 React-query <br/>
 zustand <br/>
-
+postman <br/>
 
 ### 백엔드
 Express.js <br/>
+mongoose <br/>
 MongoDB <br/>
+aws <br/>
 
 ### CI/CD
 Husky <br/>
