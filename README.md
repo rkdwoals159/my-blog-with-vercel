@@ -5,17 +5,17 @@
 
 ## 기술스택 (예정)
 ### 프론트엔드
-Next.js
-vercel 배포
-Emotion / tailwind / twin macro
-React-query
-zustand
+Next.js <br/>
+vercel 배포 <br/>
+Emotion / tailwind / twin macro <br/>
+React-query <br/>
+zustand <br/>
 
 
 ### 백엔드
-Express.js
-MongoDB
+Express.js <br/>
+MongoDB <br/>
 
 ### CI/CD
-Husky
-Github action
+Husky <br/>
+Github action <br/>
