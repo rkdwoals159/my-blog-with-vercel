@@ -311,11 +311,11 @@ export default function Category() {
               {/* Product grid */}
               <div className="lg:col-span-4">
                 <div className="h-96 rounded-lg border-4 border-dashed border-gray-200 lg:h-full lg:min-h-[60vh]">
+                  <Posting postId={0}></Posting>
                   <Posting postId={1}></Posting>
                   <Posting postId={2}></Posting>
                   <Posting postId={3}></Posting>
                   <Posting postId={4}></Posting>
-                  <Posting postId={5}></Posting>
                 </div>
                 {/* /End replace */}
               </div>
