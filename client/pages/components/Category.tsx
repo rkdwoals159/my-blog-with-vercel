@@ -9,7 +9,7 @@ import {
   Squares2X2Icon
 } from '@heroicons/react/20/solid'
 import Link from 'next/link'
-
+import Posting from './posting'
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
   { name: 'Best Rating', href: '#', current: false },
@@ -311,7 +311,11 @@ export default function Category() {
               {/* Product grid */}
               <div className="lg:col-span-4">
                 <div className="h-96 rounded-lg border-4 border-dashed border-gray-200 lg:h-full lg:min-h-[60vh]">
-                  여기는 카테고리 내용이 적힌곳입니다.
+                  <Posting postId={1}></Posting>
+                  <Posting postId={2}></Posting>
+                  <Posting postId={3}></Posting>
+                  <Posting postId={4}></Posting>
+                  <Posting postId={5}></Posting>
                 </div>
                 {/* /End replace */}
               </div>
