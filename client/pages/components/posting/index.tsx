@@ -10,18 +10,17 @@ interface PostingProps {
 export interface PostingValue {
   postid: number
   categoryId: number
-  title: String
+  title: string
   viewCount: number
   liked: number
-  thumbnailURL: String
-  content: String
+  thumbnailURL: string
+  content: string
   completed: Boolean
-  createAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
 }
 const StyledPosting = styled.div`
-  ${tw`rounded-lg border-4 mb-7`}
-  /* margin-bottom : 16px */
+  ${tw`rounded-lg border-4 mb-7`}/* margin-bottom : 16px */
 `
 export default function Posting(props: PostingProps) {
   const [postingValue, setPostinValue] = useState<PostingValue>()
