@@ -15,7 +15,7 @@ export interface PostingValue {
   liked: number
   thumbnailURL: string
   content: string
-  completed: Boolean
+  completed: boolean
   createdAt: string
   updatedAt: string
 }
