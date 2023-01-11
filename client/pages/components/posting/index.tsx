@@ -1,12 +1,14 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled/macro'
 import { Suspense, useEffect, useState } from 'react'
+import tw from 'twin.macro'
 import { getPostingFromPostId } from 'utils/apiManager'
 import PostingContent from './content'
+import PostingTitle from './title'
 interface PostingProps {
   postId: number
 }
-interface PostingValue {
-  postId: number
+export interface PostingValue {
+  postid: number
   categoryId: number
   title: String
   viewCount: number
@@ -18,10 +20,11 @@ interface PostingValue {
   updatedAt: Date
 }
 const StyledPosting = styled.div`
-  border: solid 1px;
+  ${tw`rounded-lg border-4 mb-7`}
+  /* margin-bottom : 16px */
 `
 export default function Posting(props: PostingProps) {
-  const [postingValue, setPostinValue] = useState<Promise<PostingValue>>()
+  const [postingValue, setPostinValue] = useState<PostingValue>()
   useEffect(() => {
     const fetchData = async () => {
       const result = await getPostingFromPostId(props.postId)
@@ -31,10 +34,15 @@ export default function Posting(props: PostingProps) {
   }, [])
   return (
     <>
-      <StyledPosting>
-        {JSON.stringify(postingValue)}
-        {/* <PostingContent postId={props.postId}></PostingContent> */}
-      </StyledPosting>
+      {console.log('ㅎㅇㅎㅇ2', postingValue, postingValue?.postid)}
+      {postingValue && postingValue.postid !== undefined ? (
+        <StyledPosting>
+          <PostingTitle value={postingValue}></PostingTitle>
+          <PostingContent value={postingValue}></PostingContent>
+        </StyledPosting>
+      ) : (
+        <></>
+      )}
     </>
   )
 }

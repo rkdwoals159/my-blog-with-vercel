@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import Posting from './posting'
+import Pagination from './posting/pagination'
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
   { name: 'Best Rating', href: '#', current: false },
@@ -310,13 +311,14 @@ export default function Category() {
 
               {/* Product grid */}
               <div className="lg:col-span-4">
-                <div className="h-96 rounded-lg border-4 border-dashed border-gray-200 lg:h-full lg:min-h-[60vh]">
+                <div className=" border-gray-200 lg:min-h-[60vh]">
                   <Posting postId={0}></Posting>
                   <Posting postId={1}></Posting>
                   <Posting postId={2}></Posting>
                   <Posting postId={3}></Posting>
                   <Posting postId={4}></Posting>
                 </div>
+                <Pagination></Pagination>
                 {/* /End replace */}
               </div>
             </div>
