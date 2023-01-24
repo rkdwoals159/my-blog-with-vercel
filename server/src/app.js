@@ -28,7 +28,7 @@ app.set("port", port);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
-const whiteList = ["http://localhost:3000", "http://jaemin-devBlog.ml",`http://${process.env.LOCAL_IP}:3000`];
+const whiteList = ["http://localhost:3000", "http://jaemin-devBlog.ml",`http://${process.env.LOCAL_IP}:3000`,process.env.LOCAL_IP];
 app.use(
   cors({
     origin: whiteList,
