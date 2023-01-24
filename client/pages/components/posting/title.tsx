@@ -20,7 +20,7 @@ export default function PostingTitle(props: ContentProps) {
 const StyledTitle = styled.h1`
   ${tw`text-4xl px-7 py-4 flex flex-col`}
 `
-const StyledCreatedAt = styled.text`
+const StyledCreatedAt = styled.div`
   ${tw`text-xs mr-3`}
 `
 const TimeLikeContainer = styled.div`
