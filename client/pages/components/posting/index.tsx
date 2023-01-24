@@ -1,5 +1,5 @@
 import styled from '@emotion/styled/macro'
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import tw from 'twin.macro'
 import { getPostingFromPostId } from 'utils/apiManager'
 import PostingContent from './content'
@@ -33,7 +33,6 @@ export default function Posting(props: PostingProps) {
   }, [])
   return (
     <>
-      {console.log('ㅎㅇㅎㅇ2', postingValue, postingValue?.postid)}
       {postingValue && postingValue.postid !== undefined ? (
         <StyledPosting>
           <PostingTitle value={postingValue}></PostingTitle>

@@ -1,21 +1,21 @@
 import '@toast-ui/editor/dist/toastui-editor.css'
-import { Viewer } from '@toast-ui/react-editor'
 import 'prismjs/themes/prism.css'
-import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight'
-import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css'
-import Prism from 'prismjs'
+import dynamic from 'next/dynamic'
 
 interface Props {
   content: string
 }
 
 const TuiEditor = ({ content = '' }: Props) => {
+  const Viewer = dynamic(
+    () => import('@toast-ui/react-editor').then(m => m.Viewer),
+    { ssr: false }
+  )
   return (
     <>
       {content && (
         <Viewer
           initialValue={content || ''}
-          plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
         />
       )}
     </>
