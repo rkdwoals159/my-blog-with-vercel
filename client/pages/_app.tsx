@@ -1,8 +1,10 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import '../styles/global.css'
 import GNB from './components/GNB'
 export default function App({ Component, pageProps }: AppProps) {
+  const queryClieent = new QueryClient()
   return (
     <>
       <Head>
@@ -19,8 +21,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:locale" content="ko_KR" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <GNB></GNB>
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClieent}>
+        <GNB></GNB>
+        <Component {...pageProps} />
+      </QueryClientProvider>
     </>
   )
 }

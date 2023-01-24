@@ -14,7 +14,6 @@ dotenv.config();
 
 const port = process.env.PORT | "8080";
 const app = express();
-const { PORT, MONGO_URI } = process.env;
 const __dirname = path.resolve();
 const server = http.createServer(app);
 server.listen(port, () => console.log("server open..."));
@@ -29,7 +28,7 @@ app.set("port", port);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
-const whiteList = ["http://localhost:3000", "http://jaemin-devBlog.ml"];
+const whiteList = ["http://localhost:3000", "http://jaemin-devBlog.ml",`http://${process.env.LOCAL_IP}:3000`,process.env.LOCAL_IP];
 app.use(
   cors({
     origin: whiteList,

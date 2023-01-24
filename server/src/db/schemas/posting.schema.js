@@ -8,7 +8,7 @@ const postingSchema = new mongoose.Schema(
     title: { type: String, required: true },
     viewCount: { type: Number, default: 0 },
     liked: { type: Number, default: 0 },
-    thumbnailURL: { type: String, default: 0 },
+    thumbnailURL: { type: String, default: '' },
     content: { type: String, required: true },
     createdAt: { type: Date, required: true, default: () => new Date() },
     completed: { type: String, default: false },
