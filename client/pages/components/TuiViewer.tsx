@@ -11,15 +11,7 @@ const TuiEditor = ({ content = '' }: Props) => {
     () => import('@toast-ui/react-editor').then(m => m.Viewer),
     { ssr: false }
   )
-  return (
-    <>
-      {content && (
-        <Viewer
-          initialValue={content || ''}
-        />
-      )}
-    </>
-  )
+  return <>{content && <Viewer initialValue={content || ''} />}</>
 }
 
 export default TuiEditor

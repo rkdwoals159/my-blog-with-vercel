@@ -1,7 +1,5 @@
 import styled from '@emotion/styled/macro'
-import { GetStaticProps } from 'next'
 import tw from 'twin.macro'
-import { getPostingFromPostId } from 'utils/apiManager'
 import PostingContent from './content'
 import PostingTitle from './title'
 
@@ -17,23 +15,14 @@ export interface PostingValue {
   createdAt: string
   updatedAt: string
 }
-interface PostingProps{
-  post : PostingValue
+interface PostingProps {
+  post: PostingValue
 }
 const StyledPosting = styled.div`
   ${tw`rounded-lg border-4 mb-7`}/* margin-bottom : 16px */
 `
-export default function Posting(props : PostingProps) {
+export default function Posting(props: PostingProps) {
   const postingValue = props.post
-  // const [postingValue, setPostinValue] = useState<PostingValue>()
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await getPostingFromPostId(props.postId)
-  //     // console.log('결과값 : ',result)
-  //     setPostinValue(result)
-  //   }
-  //   fetchData()
-  // }, [])
   return (
     <>
       {postingValue && postingValue.postid !== undefined ? (

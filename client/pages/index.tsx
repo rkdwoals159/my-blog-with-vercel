@@ -1,14 +1,11 @@
-import type { NextPage } from 'next'
 import { getPostingAll } from 'utils/apiManager'
 import Category from './components/Category'
 import { PostingValue } from './components/posting'
 
-
-
 interface HomeProps {
-  data : PostingValue[]
+  data: PostingValue[]
 }
-const Home = ({data} : HomeProps) => {
+const Home = ({ data }: HomeProps) => {
   return (
     <div>
       <main>
@@ -26,4 +23,3 @@ export async function getStaticProps() {
 }
 
 export default Home
-
