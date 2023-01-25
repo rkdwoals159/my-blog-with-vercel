@@ -9,7 +9,8 @@ import {
   Squares2X2Icon
 } from '@heroicons/react/20/solid'
 import Link from 'next/link'
-import Posting from './posting'
+import Posting, { PostingValue } from './posting'
+import Pagination from './posting/pagination'
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
   { name: 'Best Rating', href: '#', current: false },
@@ -58,8 +59,10 @@ const filters = [
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ')
 }
-
-export default function Category() {
+interface CategoryProps {
+  data: PostingValue[]
+}
+export default function Category(props: CategoryProps) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
   return (
@@ -310,13 +313,16 @@ export default function Category() {
 
               {/* Product grid */}
               <div className="lg:col-span-4">
-                <div className="h-96 rounded-lg border-4 border-dashed border-gray-200 lg:h-full lg:min-h-[60vh]">
-                  <Posting postId={0}></Posting>
-                  <Posting postId={1}></Posting>
-                  <Posting postId={2}></Posting>
-                  <Posting postId={3}></Posting>
-                  <Posting postId={4}></Posting>
+                <div className=" border-gray-200 lg:min-h-[60vh]">
+                  {props.data ? (
+                    props.data.map((post: PostingValue, idx) => {
+                      return <Posting key={idx} post={post}></Posting>
+                    })
+                  ) : (
+                    <></>
+                  )}
                 </div>
+                <Pagination></Pagination>
                 {/* /End replace */}
               </div>
             </div>
