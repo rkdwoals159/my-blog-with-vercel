@@ -28,14 +28,14 @@ app.set("port", port);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
-const whiteList = ["http://localhost:3000", "http://jaemin-devBlog.ml",`http://${process.env.LOCAL_IP}:3000`,process.env.LOCAL_IP,'https://jaemin-devblog-rnjpsgafy-rkdwoals159.vercel.app'];
-app.use(
-  cors({
-    origin: whiteList,
-    credentials: true, // 응답 헤더에 Access-Control-Allow-Credentials 추가
-    optionsSuccessStatus: 200, // 응답 상태 200으로 설정
-  })
-);
+const whiteList = [
+  "http://localhost:3000",
+  "http://jaemin-devBlog.ml",
+  `http://${process.env.LOCAL_IP}:3000`,
+  process.env.LOCAL_IP,
+  "https://jaemin-devblog-rnjpsgafy-rkdwoals159.vercel.app",
+];
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
