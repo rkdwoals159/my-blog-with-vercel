@@ -1,30 +1,29 @@
 import type { NextPage } from 'next'
-import styled from '@emotion/styled/macro'
-import tw from 'twin.macro'
+import { getPostingAll } from 'utils/apiManager'
 import Category from './components/Category'
+import { PostingValue } from './components/posting'
 
-const Input = tw.input`
-    text-center border h-28
-`
 
-const MyDiv = styled.div`
-  background: gold;
-  font-size: 5rem;
-  margin-top: 10px;
-`
 
-const Home: NextPage = () => {
+interface HomeProps {
+  data : PostingValue[]
+}
+const Home = ({data} : HomeProps) => {
   return (
     <div>
       <main>
-        <h1>
-          {/* <Input placeholder="box" />
-          <MyDiv>Test Text</MyDiv> */}
-        </h1>
-        <Category></Category>
+        <Category data={data}></Category>
       </main>
     </div>
   )
 }
 
+export async function getStaticProps() {
+  const data = await getPostingAll()
+  return {
+    props: { data } // 페이지 컴포넌트에 props로 넘길 것
+  }
+}
+
 export default Home
+

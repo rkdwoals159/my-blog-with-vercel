@@ -10,6 +10,7 @@ export default function PostingContent(props: ContentProps) {
   const NoSsrViewer = dynamic(() => import('../TuiViewer'), {
     ssr: false
   })
+  if (!props.value) return <></>
   return (
     <StyledContent>
       <NoSsrViewer content={props.value.content}></NoSsrViewer>

@@ -2,6 +2,7 @@ import type { ContentProps } from './content'
 import styled from '@emotion/styled/macro'
 import tw from 'twin.macro'
 export default function PostingTitle(props: ContentProps) {
+  if (!props.value) return <></>
   return (
     <>
       <StyledTitle>
