@@ -1,0 +1,35 @@
+{
+  "name": "cd-cd",
+  "version": "1.0.0",
+  "description": "프론트엔드 개발자 강재민 개발블로그입니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkdwoals159/my-blog-with-vercel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rkdwoals159/my-blog-with-vercel/issues"
+  },
+  "homepage": "https://github.com/rkdwoals159/my-blog-with-vercel#readme",
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "lint-staged": "^13.1.0",
+    "prettier": "2.8.3"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "mocha": "^10.2.0"
+  }
+}
