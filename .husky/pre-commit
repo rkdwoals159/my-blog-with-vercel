@@ -3,3 +3,5 @@
 
 echo "Hello Husky"
 npm run lint-staged
+cd client
+npm run build
